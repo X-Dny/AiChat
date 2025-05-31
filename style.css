@@ -1,0 +1,338 @@
+body {
+    background-color: #020012;
+}
+
+header {
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    background: linear-gradient(180deg, #020012, #02001200);
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#ai-model {
+    display: flex;
+    color: white;
+    background: linear-gradient(90deg, #00ffff, #ff00ff);
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 20px;
+    align-items: center;
+    flex-direction: row;
+}
+
+#ai-model svg {
+    fill: white;
+    margin-right: 5px;
+}
+
+#ai-model p {
+    margin: 0px;
+}
+
+#welcome-msg {
+    color: white;
+    font-size: 9vw;
+    margin-top: 78px;
+}
+
+#blur-screen {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    background: transparent;
+    backdrop-filter: blur(2.5px);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#ai-model-popup {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    background: linear-gradient(225deg, #00ffff, #ff00ff);
+    border: none;
+    border-radius: 10px;
+    top: 30%;
+    bottom: 30%;
+    right: 10%;
+    left: 10%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#ai-model-popup h3 {
+    color: white;
+    margin-top: 7.5px;
+    margin-bottom: 7.5px;
+}
+
+#ai-model-popup div {
+    display: flex;
+    overflow: auto;
+    background: white;
+    border: none;
+    border-radius: 10px;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+
+.first-model {
+    background: white;
+    color: #757575;
+    border-top: none;
+    border-bottom: solid 1px #757575;
+    border-right: none;
+    border-left: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 7.5px;
+}
+
+.middle-model {
+    background: white;
+    color: #757575;
+    border-top: none;
+    border-bottom: solid 1px #757575;
+    border-right: none;
+    border-left: none;
+    padding: 7.5px;
+}
+
+.last-model {
+    background: white;
+    color: #757575;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    border-left: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 7.5px;
+}
+
+#conversation-container {
+    margin-bottom: 100px;
+}
+
+.user-message-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-message-container div {
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    margin-right: 5px;
+    margin-left: 20%;
+    color: white;
+    background: linear-gradient(135deg, #008585, #00ffff);
+    padding: 10px;
+    border: none;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.user-message-container div img {
+    display: none;
+    background: white;
+    width: 97.5%;
+    border: solid 3px white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.user-message-container div p {
+    margin: 0;
+}
+
+.user-message-container div time {
+    display: flex;
+    direction: ltr;
+    font-size: 12px;
+    margin-top: 10px;
+    align-items: flex-end;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.loading-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.loading-container div {
+    display: flex;
+    direction: ltr;
+    align-items: center;
+    flex-direction: row;
+    width: max-content;
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    margin-left: 5px;
+    margin-right: 20%;
+    color: white;
+    background: linear-gradient(135deg, #ff00ff, transparent);
+    padding: 10px;
+    border: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.loading-container div h4 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 5px;
+}
+
+.loading-container div span:nth-of-type(1) {
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+    margin: 3px;
+    background: white;
+    border-radius: 50%;
+    animation: loading 1s infinite alternate;
+    animation-delay: 0s;
+}
+
+.loading-container div span:nth-of-type(2) {
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+    margin: 3px;
+    background: white;
+    border-radius: 50%;
+    animation: loading 1s infinite alternate;
+    animation-delay: 0.2s;
+}
+
+.loading-container div span:nth-of-type(3) {
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+    margin: 3px;
+    background: white;
+    border-radius: 50%;
+    animation: loading 1s infinite alternate;
+    animation-delay: 0.4s;
+}
+
+.ai-message-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.ai-message-container div {
+    width: -webkit-fill-available;
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    margin-left: 5px;
+    margin-right: 20%;
+    color: white;
+    background: linear-gradient(135deg, purple, #ff00ff);
+    padding: 10px;
+    border: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.ai-message-container div p {
+    margin: 0;
+}
+
+.ai-message-container div pre {
+    overflow: auto;
+    direction: ltr;
+    background: #181818;
+    border: solid 10px #181818;
+    border-radius: 10px;
+}
+
+.ai-message-container div time {
+    display: flex;
+    direction: ltr;
+    font-size: 12px;
+    margin-top: 10px;
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.ai-message-container div table {
+    font-size: 11px;
+    text-align: center;
+    background: white;
+}
+
+.ai-message-container div table thead {
+    background: #181818;
+}
+
+.ai-message-container div table tbody {
+    background: #555555;
+}
+
+#user-control-container {
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    height: 50px;
+    background: linear-gradient(90deg, #00ffff, #ff00ff);
+    border: none;
+    border-radius: 30px;
+    padding: 5px;
+    bottom: 31px;
+    left: 15px;
+    right: 15px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#user-control-container svg {
+    fill: white;
+    width: 50px;
+}
+
+#user-control-container textarea{
+    background: white;
+    width: -webkit-fill-available;
+    resize: none;
+    margin: 5px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    padding: 7px;
+}
+
+@keyframes loading {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
