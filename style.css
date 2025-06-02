@@ -299,7 +299,7 @@ header {
     display: flex;
     position: fixed;
     z-index: 1;
-    height: 50px;
+    height: fit-content;
     background: linear-gradient(90deg, #00ffff, #ff00ff);
     border: none;
     border-radius: 30px;
@@ -316,11 +316,41 @@ header {
     width: 50px;
 }
 
-#user-control-container textarea{
+#user-control-container div {
+    display: flex;
+    background: white;
+    align-items: center;
+    margin: 5px;
+    flex-wrap: wrap;
+    border: none;
+    border-radius: 10px;
+}
+
+#user-control-container div img-container {
+    display: none;
+    background: #00ffff33;
+    height: 35px;
+    align-items: center;
+    flex-direction: row;
+    border-radius: 10px;
+}
+
+#user-control-container div img-container img {
+    height: 35px;
+    border: none;
+    border-top-left-radius: 10px;
+}
+
+#user-control-container div img-container svg {
+    height: 30px;
+    width: 30px;
+}
+
+#user-control-container div textarea {
     background: white;
     width: -webkit-fill-available;
     resize: none;
-    margin: 5px;
+    margin: 0px;
     outline: none;
     border: none;
     border-radius: 10px;

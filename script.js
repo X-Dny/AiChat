@@ -134,10 +134,35 @@ function detectDirection(message) {
 }
 
 function uploadFiles() {
+    var imageContainer = document.getElementById("user-control-container").children[1].children[0];
+    var fileInputImage = imageContainer.children[0];
     fileInput = document.createElement("input");
     fileInput.setAttribute("type", "file");
     fileInput.setAttribute("accept", "image/*");
+    fileInput.addEventListener('change', function() {
+        if (fileInput.files.length > 0) {
+            var file = fileInput.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    fileInputImage.setAttribute("src", e.target.result);
+                    imageContainer.style.display = "flex";
+                    imagesURLHistory.push(e.target.result);
+                }
+                reader.readAsDataURL(file);
+                fileInput = "";
+            }
+        }
+    });
     fileInput.click();
+}
+
+function deleteFile() {
+    var imageContainer = document.getElementById("user-control-container").children[1].children[0];
+    var fileInputImage = imageContainer.children[0];
+    imagesURLHistory.pop();
+    imageContainer.style.display = "none";
+    fileInputImage.setAttribute("src", "");
 }
 
 function sendAiMessage(query, imageURL, userTimeElem, isWebSearched=false) {
@@ -161,7 +186,6 @@ function sendAiMessage(query, imageURL, userTimeElem, isWebSearched=false) {
         conversationHistory.push({role: "user", content: query});
         if (imageURL !== null) {
             popupLoading("Analyzing");
-            imagesURLHistory.push(imageURL);
             var messages = query;
         } else {
             popupLoading("Generating");
@@ -211,18 +235,12 @@ function sendUserMessage() {
     parentDiv.setAttribute("class", "user-message-container");
     var childDiv = document.createElement("div");
     var img = document.createElement("img");
-    if (typeof fileInput === 'object') {
-        var file = fileInput.files[0];
-        if (file) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                img.src = e.target.result;
-                img.style.display = 'block';
-            }
-            reader.readAsDataURL(file);
-            fileInput = "";
-        }
-    };
+    var imageContainer = document.getElementById("user-control-container").children[1].children[0];
+    var fileInputImage = imageContainer.children[0];
+    if (fileInputImage.getAttribute("src") !== '') {
+        img.src = imagesURLHistory[imagesURLHistory.length - 1];
+        img.style.display = 'block';
+    }
     var p = document.createElement("p");
     var timeElem = document.createElement("time");
     var date = new Date();
@@ -232,8 +250,8 @@ function sendUserMessage() {
         timeElem.innerText = `${date.getHours()}:${date.getMinutes()} PM`;
     };
     timeElem.innerHTML += `<svg width="17.5px" height="17.5px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 2.5px;"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.4933 6.93502C15.8053 7.20743 15.8374 7.68122 15.565 7.99325L7.70786 16.9933C7.56543 17.1564 7.35943 17.25 7.14287 17.25C6.9263 17.25 6.72031 17.1564 6.57788 16.9933L3.43502 13.3933C3.16261 13.0812 3.19473 12.6074 3.50677 12.335C3.8188 12.0626 4.29259 12.0947 4.565 12.4068L7.14287 15.3596L14.435 7.00677C14.7074 6.69473 15.1812 6.66261 15.4933 6.93502Z" fill="#ffffff"></path></g></svg>`;
-    var message = document.getElementById("user-control-container").children[1].value;
-    document.getElementById("user-control-container").children[1].value = ""
+    var message = document.getElementById("user-control-container").children[1].children[1].value;
+    document.getElementById("user-control-container").children[1].children[1].value = ""
     if (message.trim().length !== 0) {
         childDiv.style.direction = detectDirection(message);
         p.innerText = message;
@@ -243,11 +261,13 @@ function sendUserMessage() {
         parentDiv.appendChild(childDiv);
         document.getElementById("conversation-container").appendChild(parentDiv);
         popupLoading();
-        if (file) {
+        if (fileInputImage.getAttribute("src") !== '') {
             setTimeout(() => {
                 window.scrollTo({top: document.body.scrollHeight, behavior: "smooth"});
                 var loadImageInterval = setInterval(function() {
                     if (img.src.startsWith("data:image")) {
+                        imageContainer.style.display = "none";
+                        fileInputImage.setAttribute("src", "");
                         needWebSearch(message, img.src, timeElem);
                         clearInterval(loadImageInterval);
                     }

@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>AiChat</title>
         <link rel="stylesheet" href="style.css">
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
         <script src="script.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
         <script src="https://js.puter.com/v2/"></script>
@@ -63,7 +63,19 @@
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="25px" width="25px" version="1.1" viewBox="0 0 512 512" enable-background="new 0 0 512 512" onclick="clearConversation()">
                 <path d="m371.156,111.07c-7.891-12.656-23.469-18.188-37.578-13.328-14.102,4.859-22.977,18.813-21.398,33.641 2.969,27.883-1.789,48.516-15.656,65.242-29.563-33.797-39.734-81.266-25.156-124.984 2.578-7.727 5.977-15.242 10.383-22.984 6.234-10.953 4.852-25.375-2.586-35.555-6.024-8.227-15.61-13.094-25.813-13.102-0.008,0-0.008,0-0.016,0-10.195,0-19.773,4.859-25.805,13.078-15.922,21.703-155.531,215.211-155.531,324.383 0,96.242 81.344,174.539 181.336,174.539 101.18,0 186.664-79.93 186.664-174.539 0-71.531-26.383-158.273-68.844-226.391zm-116.866,368.927c-52.859,0-95.719-34.18-95.719-76.359 0-45.28 65.93-128.114 88.354-154.98 2.168-2.597 6.99-1.235 6.919,1.931-0.274,12.249-0.018,33.315 3.709,53.406 3.686,19.877 10.77,38.799 24.094,47.285 21.196-12.284 30.563-27.965 31.355-47.264 0.133-3.224 5.234-4.412 7.079-1.579 22.143,34.013 33.347,72.368 33.347,101.201 0.001,42.179-46.277,76.359-99.138,76.359z"></path>
             </svg>
-            <textarea type="text" placeholder="Say something..." rows="1"></textarea>
+            <div>
+                <img-container>
+                    <img src>
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="deleteFile()">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6.99486 7.00636C6.60433 7.39689 6.60433 8.03005 6.99486 8.42058L10.58 12.0057L6.99486 15.5909C6.60433 15.9814 6.60433 16.6146 6.99486 17.0051C7.38538 17.3956 8.01855 17.3956 8.40907 17.0051L11.9942 13.4199L15.5794 17.0051C15.9699 17.3956 16.6031 17.3956 16.9936 17.0051C17.3841 16.6146 17.3841 15.9814 16.9936 15.5909L13.4084 12.0057L16.9936 8.42059C17.3841 8.03007 17.3841 7.3969 16.9936 7.00638C16.603 6.61585 15.9699 6.61585 15.5794 7.00638L11.9942 10.5915L8.40907 7.00636C8.01855 6.61584 7.38538 6.61584 6.99486 7.00636Z" fill="red"></path> 
+                        </g>
+                    </svg>
+                </img-container>
+                <textarea type="text" placeholder="Say something..." rows="1"></textarea>
+            </div>
             <svg width="25px" height="28px" viewBox="0 5.75 26 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="fill: none;" onclick="uploadFiles()">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
