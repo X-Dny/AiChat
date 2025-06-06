@@ -260,7 +260,9 @@ function sendUserMessage() {
         childDiv.appendChild(timeElem);
         parentDiv.appendChild(childDiv);
         document.getElementById("conversation-container").appendChild(parentDiv);
-        popupLoading();
+        if (puter.auth.isSignedIn() === true) {
+            popupLoading();
+        }
         if (fileInputImage.getAttribute("src") !== '') {
             setTimeout(() => {
                 window.scrollTo({top: document.body.scrollHeight, behavior: "smooth"});
@@ -304,7 +306,12 @@ function needWebSearch(query, imageURL, timeElem) {
                 sendAiMessage(query, imageURL, timeElem);
             }
         }).catch(error => {
-            needWebSearch(query, imageURL, timeElem);
+            if (error.status === false) {
+                puter.resetAuthToken();
+                needWebSearch(query, imageURL, timeElem);
+            } else {
+                needWebSearch(query, imageURL, timeElem);
+            }
         });
     } catch (error) {
         reloadPuter(query, imageURL, timeElem);
