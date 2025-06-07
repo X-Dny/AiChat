@@ -1,1 +1,20 @@
-{"name":"","short_name":"","icons":[{"src":"https://raw.githubusercontent.com/X-Dny/AiChat/refs/heads/main/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},{"src":"https://raw.githubusercontent.com/X-Dny/AiChat/refs/heads/main/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}],"theme_color":"#ffffff","background_color":"#ffffff","display":"standalone"}
+{
+    "name": "AiChat",
+    "short_name": "AiChat",
+    "version": "1.1.4",
+    "description": "Highrise Space Project AiChat App",
+    "author": "Highrise Space Project Dev Team",
+    "start_url": "https://x-dny.github.io/AiChat",
+    "icons":[{
+            "src": "https://raw.githubusercontent.com/X-Dny/AiChat/refs/heads/main/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"},
+        {
+            "src": "https://raw.githubusercontent.com/X-Dny/AiChat/refs/heads/main/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }],
+    "theme_color": "#020012",
+    "background_color": "#020012",
+    "display": "standalone"
+}
