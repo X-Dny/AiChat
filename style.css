@@ -318,6 +318,7 @@ header {
 
 #user-control-container div {
     display: flex;
+    width: 75%;
     background: white;
     align-items: center;
     margin: 5px;
