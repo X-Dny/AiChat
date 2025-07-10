@@ -36,6 +36,21 @@ header {
     margin: 0px;
 }
 
+#app-menu {
+    position: fixed;
+    display: flex;
+    color: white;
+    background: linear-gradient(90deg, #00ffff, #ff00ff);
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 20px;
+    align-items: center;
+    flex-direction: row;
+    right: 20px;
+}
+
 #welcome-msg {
     color: white;
     font-size: 9vw;
